@@ -6,10 +6,11 @@ import com.example.ReservationSystem.Exceptions.BuildingException;
 import com.example.ReservationSystem.repository.BuildingRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class BuildingServices {
     @Autowired
     private final BuildingRepository buildingRepository;

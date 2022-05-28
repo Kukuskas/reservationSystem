@@ -1,4 +1,4 @@
-package com.example.ReservationSystem.Dao.MongoDao;
+package com.example.ReservationSystem.DAO.MongoDao;
 
 import org.springframework.data.annotation.Id;
 
