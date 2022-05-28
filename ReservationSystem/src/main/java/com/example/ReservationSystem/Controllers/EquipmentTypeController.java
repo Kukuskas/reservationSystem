@@ -6,10 +6,7 @@ import com.example.ReservationSystem.Exceptions.EquipmentTypeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,24 +25,24 @@ public class EquipmentTypeController {
         return new ResponseEntity<>(_equipmentTypeServices.getAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/createEquipmentType/{name}")
-    public void createEquipmentType(String name){
-        _equipmentTypeServices.createEquipmentType(name);
+    @PostMapping("/createEquipmentType")
+    public void createEquipmentType(@RequestBody EquipmentType equipmentType){
+        _equipmentTypeServices.createEquipmentType(equipmentType.getName());
     }
 
-    @GetMapping("/deleteEquipmentType/{id}")
-    public void deleteEquipmentType(String id){
+    @GetMapping("/deleteEquipmentType")
+    public void deleteEquipmentType(@RequestBody EquipmentType equipmentType){
         try {
-            _equipmentTypeServices.deleteEquipmentType(id);
+            _equipmentTypeServices.deleteEquipmentType(equipmentType.getId());
         } catch (EquipmentTypeException be){
             System.err.println("EquipmentType not found. " + be);
         }
     }
 
-    @PostMapping("/updateEquipmentType/{id}")
-    public void updateEquipmentType(String id, EquipmentType equipmentType){
+    @PostMapping("/updateEquipmentType")
+    public void updateEquipmentType(@RequestBody EquipmentType equipmentType){
         try {
-            _equipmentTypeServices.updateEquipmentType(id, equipmentType.getName());
+            _equipmentTypeServices.updateEquipmentType(equipmentType.getId(), equipmentType.getName());
         } catch (EquipmentTypeException be){
             System.err.println("EquipmentType not found. " + be);
         }
