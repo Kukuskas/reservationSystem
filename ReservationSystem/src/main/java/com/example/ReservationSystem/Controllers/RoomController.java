@@ -2,16 +2,22 @@ package com.example.ReservationSystem.Controllers;
 
 import com.example.ReservationSystem.BL.RoomServices;
 
+import com.example.ReservationSystem.DAO.MongoDao.Room;
+import com.example.ReservationSystem.Exceptions.RoomException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class RoomController {
   private final RoomServices _roomServices;
   @Autowired
-  public  RoomController(RoomController roomServices)
+  public  RoomController(RoomServices roomServices)
   {
     this._roomServices = roomServices;
   }
@@ -48,7 +54,7 @@ public class RoomController {
   @PostMapping("/updateRoom/{id}")
   public void updateRoom(String id, Room room){
     try {
-      _roomServices.updateRoom(id, room.getBuilding());
+      _roomServices.updateRoom(id, room.getBuildingId(), name);
     } catch (RoomException be){
       System.err.println("Room not found. " + be);
     }
