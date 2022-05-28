@@ -30,7 +30,7 @@ public class RoomController {
   public String getRoomLocation(String id){
     String location = "";
     try {
-      location = _roomServices.getBuilding(id);
+      location = _roomServices.getBuildingId(id);
     } catch (RoomException be){
       System.err.println("Room not found. " + be);
     }
@@ -52,7 +52,7 @@ public class RoomController {
   }
 
   @PostMapping("/updateRoom/{id}")
-  public void updateRoom(String id, Room room){
+  public void updateRoom(String id, Room room, String name){
     try {
       _roomServices.updateRoom(id, room.getBuildingId(), name);
     } catch (RoomException be){
