@@ -1,4 +1,7 @@
 package com.example.ReservationSystem.DAO.ApiDao;
 
-public class CreateUser {
+import com.example.ReservationSystem.DAO.MongoDao.User;
+
+public class CreateUser extends User {
+    
 }

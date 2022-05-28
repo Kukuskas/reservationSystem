@@ -5,8 +5,16 @@ import com.example.ReservationSystem.repository.LoginRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 public class LoginServices {
-    @Autowired
+    
     private final LoginRepository loginRepository;
-    public LoginServices(LoginRepository rep)
-    {this.loginRepository=rep;}
+    @Autowired
+    public LoginServices(LoginRepository rep) {
+        this.loginRepository = rep;
+    }
+    public void signIn()
+    {}
+    public void create()
+    {
+        
+    }
 }
