@@ -1,4 +1,4 @@
-package com.example.ReservationSystem.Dao.ApiDao;
+package com.example.ReservationSystem.DAO.ApiDao;
 
 public class CreateUser {
 }
