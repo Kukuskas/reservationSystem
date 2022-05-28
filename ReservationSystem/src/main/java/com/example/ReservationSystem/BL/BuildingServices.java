@@ -34,4 +34,23 @@ public class BuildingServices {
     public List<Building> getAll(){
         return buildingRepository.findAll();
     }
+
+    public Building getBuildingById(String id) throws BuildingException {
+        Optional<Building> building = buildingRepository.findById(id);
+        if (building.isPresent()){
+            return building.get();
+        }else{
+            throw new BuildingException("Non existing building.");
+        }
+    }
+
+    public void deleteBuilding(String id) throws BuildingException {
+        buildingRepository.delete(getBuildingById(id));
+    }
+
+    public void updateBuilding(String id, String location) throws BuildingException {
+        Building building = this.getBuildingById(id);
+        building.setLocation(location);
+        buildingRepository.save(building);
+    }
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -34,6 +35,29 @@ public class BuildingController {
             System.err.println("Building not found. " + be);
         }
         return location;
+    }
+
+    @PostMapping("/createBuilding/{location}")
+    public void createBuilding(String location){
+        _buildingServices.createBuilding(location);
+    }
+
+    @GetMapping("/deleteBuilding/{id}")
+    public void deleteBuilding(String id){
+        try {
+            _buildingServices.deleteBuilding(id);
+        } catch (BuildingException be){
+            System.err.println("Building not found. " + be);
+        }
+    }
+
+    @PostMapping("/updateBuilding/{id}")
+    public void updateBuilding(String id, Building building){
+        try {
+            _buildingServices.updateBuilding(id, building.getLocation());
+        } catch (BuildingException be){
+            System.err.println("Building not found. " + be);
+        }
     }
 
 }
